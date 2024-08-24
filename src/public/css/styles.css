@@ -206,7 +206,7 @@ input[type="password"] {
 section.login{
     background: url("../assets/joystick2.jpg") no-repeat;
     width:1000px;
-    height: 600px;
+    height: 700px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -233,7 +233,7 @@ label{
 button{
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 150px;
+    width: 250px;
     border:none;
     background: #333;
     color: white;
