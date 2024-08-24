@@ -8,7 +8,7 @@ import { config } from "./config.js";
 import { sendWelcomeEmail } from "../nodemailer.js";
 import mongoose from "mongoose";
 import { usersModel } from "../dao/models/usersModel.js";
-import { config } from "./config.js";
+
 
 const usuariosManager = new UsersManager()
 const cartManager = new CartManagerMONGO();
