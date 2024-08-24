@@ -6,7 +6,7 @@ import { logger } from "./logger.js";
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'laueze1998@gmail.com',
+        user: config.GMAIL,
         pass: config.GMAIL_PASS
     }
 });
@@ -22,9 +22,9 @@ export const sendWelcomeEmail = (toEmail) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return console.log(error);
+            return req.logger.error(error);
         }
-        console.log('Correo enviado: ' + info.response);
+        req.logger.info('Correo enviado: ' + info.response);
     });
 };
 

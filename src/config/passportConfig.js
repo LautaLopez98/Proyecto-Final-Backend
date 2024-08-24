@@ -8,6 +8,7 @@ import { config } from "./config.js";
 import { sendWelcomeEmail } from "../nodemailer.js";
 import mongoose from "mongoose";
 import { usersModel } from "../dao/models/usersModel.js";
+import { config } from "./config.js";
 
 const usuariosManager = new UsersManager()
 const cartManager = new CartManagerMONGO();
@@ -71,7 +72,7 @@ export const initPassport = () =>{
         {
             clientID:config.CLIENT_ID,
             clientSecret:config.CLIENT_SECRET,
-            callbackURL:"http://localhost:8080/api/sessions/cbGitHub"
+            callbackURL:config.GITHUB_CALLBACK_URL || "http://localhost:8080/api/sessions/cbGitHub"
         },
         async(tokenAcceso, tokenRefresh, profile, done)=>{
             try {

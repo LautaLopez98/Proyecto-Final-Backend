@@ -14,7 +14,9 @@ export const config = {
     DB_NAME: process.env.DB_NAME,
     SECRET:process.env.SECRET,
     CLIENT_ID: process.env.CLIENT_ID,
+    GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL,
     CLIENT_SECRET: process.env.CLIENT_SECRET,
     GMAIL_PASS: process.env.GMAIL_PASS,
+    GMAIL: process.env.GMAIL,
     MODE: process.env.MODE,
 }
