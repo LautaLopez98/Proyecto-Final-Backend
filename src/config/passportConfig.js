@@ -35,7 +35,7 @@ export const initPassport = () =>{
                 let newCart=await cartManager.create()
                 let newUser = await usuariosManager.create({first_name, last_name, age, email:username, password, carrito: newCart._id})
                 // usuario adminCoder@coder.com, contraseña 123 ya creado //
-                // sendWelcomeEmail(username)
+                sendWelcomeEmail(username)
                 return done(null, newUser)
             } catch (error) {
                 return done(error)
