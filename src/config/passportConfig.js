@@ -72,7 +72,7 @@ export const initPassport = () =>{
         {
             clientID:config.CLIENT_ID,
             clientSecret:config.CLIENT_SECRET,
-            callbackURL:"http://localhost:8080/api/sessions/cbGitHub" || config.GITHUB_CALLBACK_URL
+            callbackURL:"http://localhost:8080/api/sessions/cbGitHub"
         },
         async(tokenAcceso, tokenRefresh, profile, done)=>{
             try {
