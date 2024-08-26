@@ -1,8 +1,8 @@
 import ProductManagerMONGO from "../dao/Mongo/productManagerMONGO.js";
 import {isValidObjectId} from "mongoose";
-import { cartService } from "../repository/cartService.js";
-import { productService } from "../repository/productService.js";
-import { ticketService } from "../repository/ticketService.js";
+import { cartService } from "../services/cartService.js";
+import { productService } from "../services/productService.js";
+import { ticketService } from "../services/ticketService.js";
 import { CustomError  } from "../errors/customError.js";
 import { TIPOS_ERROR } from "../errors/errors.js"
 import { sendPurchaseEmail } from "../nodemailer.js";
@@ -168,7 +168,14 @@ export class CartController {
                 if (product.stock >= cartProduct.quantity) {
                     product.stock -= cartProduct.quantity;
                     await productService.updateProduct(product._id, { stock: product.stock });
-                    purchasedProducts.push({ product: product._id, quantity: cartProduct.quantity });
+                    purchasedProducts.push({
+                        product: {
+                            title: product.title,
+                            price: product.price,
+                            description: product.description,
+                        },
+                        quantity: cartProduct.quantity
+                    });
                     totalAmount += product.price * cartProduct.quantity;
                 } else {
                     productsNotPurchased.push(cartProduct.product);

@@ -93,3 +93,11 @@ router.get('/carts/:cid', async (req, res) => {
         res.setHeader('Content-Type','text/html');
         return res.status(200).render("carts", {carrito, login: req.session.user});
 });
+
+router.get('/admin', (req, res) => {
+    if (req.user && req.user.rol === 'admin') {
+        res.render('admin', { title: 'Administrar Usuarios' });
+    } else {
+        res.status(403).json({ error: 'Acceso denegado' });
+    }
+});

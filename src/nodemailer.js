@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendWelcomeEmail = (toEmail) => {
     const mailOptions = {
-        from: 'laueze1998@gmail.com',
+        from: config.GMAIL,
         to: toEmail,
         subject: 'Bienvenido a mi aplicación',
         text: 'Gracias por registrarte en mi aplicación!',
@@ -30,7 +30,7 @@ export const sendWelcomeEmail = (toEmail) => {
 
 export const sendResetPasswordEmail = (toEmail, token) => {
     const mailOptions = {
-        from: 'laueze1998@gmail.com',
+        from: config.GMAIL,
         to: toEmail,
         subject: 'Restablecimiento de Contraseña',
         html: `<h1>Restablecimiento de Contraseña</h1>
@@ -48,7 +48,7 @@ export const sendResetPasswordEmail = (toEmail, token) => {
 
 export const sendPurchaseEmail = async (ticket, userEmail) => {
     const mailOptions = {
-        from: 'laueze1998@gmail.com',
+        from: config.GMAIL,
         to: userEmail,
         subject: 'Confirmación de Compra',
         html: `<h1>Gracias por tu compra</h1>
@@ -56,7 +56,14 @@ export const sendPurchaseEmail = async (ticket, userEmail) => {
                 <p><strong>ID del ticket:</strong> ${ticket._id}</p>
                 <p><strong>Productos:</strong></p>
                 <ul>
-                    ${ticket.products.map(p => `<li>Producto: ${p.product}, Cantidad: ${p.quantity}</li>`).join('')}
+                ${ticket.products.map(p => `
+                    <li>
+                        <strong>Producto:</strong> ${p.product.title}<br>
+                        <strong>Descripción:</strong> ${p.product.description}<br>
+                        <strong>Precio:</strong> $${p.product.price}<br>
+                        <strong>Cantidad:</strong> ${p.quantity}<br>
+                    </li>
+                `).join('')}
                 </ul>
                 <p><strong>Total:</strong> $${ticket.amount}</p>`
     };

@@ -1,6 +1,6 @@
 import {isValidObjectId} from "mongoose";
 import {io} from "../app.js"
-import { productService } from "../repository/productService.js";
+import { productService } from "../services/productService.js";
 import { CustomError  } from "../errors/customError.js";
 import { TIPOS_ERROR } from "../errors/errors.js"
 import "express-async-errors"
