@@ -3,7 +3,7 @@ Swal.fire({
     input:"text",
     text:"Ingrese su nickname",
     inputValidator: (value)=>{
-        return !value && "Debe ingresar un nombre...!!!"
+        return !value && "Es obligatorio ingresar nombre"
     },
     allowOutsideClick:false
 }).then ( datos=>{
@@ -20,7 +20,7 @@ Swal.fire({
 
     socket.on("nuevoUsuario", nombre=>{
         Swal.fire({
-            text:`${nombre} se ha conectado...!!!`,
+            text:`${nombre} se ha conectado`,
             toast:true,
             position:"top-right"
         })
@@ -34,7 +34,7 @@ Swal.fire({
     })
 
     socket.on("saleUsuario", nombre=>{
-        divMensajes.innerHTML+=`<span class="mensaje"><strong>${nombre}</strong> ha salido del chat... :(</span><br>`
+        divMensajes.innerHTML+=`<span class="mensaje"><strong>${nombre}</strong> ha salido del chat :(</span><br>`
         divMensajes.scrollTop=divMensajes.scrollHeight
     })
 
