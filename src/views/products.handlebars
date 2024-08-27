@@ -10,9 +10,7 @@
 {{/if}}
 <hr>
 <div class="container">
-    <button>
-        <a href="/carts/{{carrito._id}}">Ver Carrito</a>
-    </button>
+        <a href="/carts/{{carrito._id}}"><button>Ver Carrito</button></a>
 </div>
 
 <input type="text" value="{{carrito._id}}" hidden id="carrito">
@@ -23,12 +21,10 @@
     <div class="card">
             <h3>{{title}}</h3>
             <img src="/uploads/{{thumbnail}}" alt="Thumbnail"></p>
-            <p>Precio: ${{price}}</p>
-            <p>Código: {{code}}</p>
+            <h3>Precio: ${{price}}</h3>
             <p>Stock: {{stock}}</p>
             <p>Category: {{category}}</p>
             <p>Descripción:{{description}}</p>
-            <p>Status: {{status}}</p>
         <button class="boton" onclick="comprar('{{_id}}')">Agregar a Carrito</button>
     </div>
     {{/each}}
